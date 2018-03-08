@@ -13,11 +13,12 @@ class Api::TripsController < ApplicationController
     end
   end
 
-  # def update
+  def update
+    binding.pry 
   #   trip = Trip.find(params[:id])
   #  # TODO 
   #   render json: trip
-  # end
+  end
 
   def destroy
     Trip.find(params[:id]).destroy

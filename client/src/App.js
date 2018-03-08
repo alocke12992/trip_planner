@@ -21,17 +21,11 @@ class App extends Component {
       })
   }
 
-  updateTrip = (id) => {
-    fetch(`/api/trips/${id}`, { method: 'PUT' })
-      .then(res => res.json())
-      .then(trip => {
-        let trips = this.state.trips.map(t => {
-          if (t.id === id)
-            return trip
-          return t;
-        });
-
-        this.setState({ trips });
+  updateTrip = (id, name) => {
+    let trip = { name }
+    axios.put(`/api/trips/${id}`, trip)
+      .then(res => {
+        console.log(res)
       })
   }
 

@@ -3,14 +3,36 @@ import React from 'react'
 
 
 class Trip extends React.Component {
-  state = {editing: false}
+  state = {
+    editing: false,
+    name: this.props.name,
+  }
+
+  handleChange = (e) => {
+    let { name, value } = e.target;
+    this.setState({ [name]: value })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { updateTrip, id} = this.props
+    updateTrip(id, this.state.name)
+  }
 
   render() {
     if (this.state.editing) {
       return (
         <div>
-          <form>
-            <input />
+          <form 
+            className="col l4"
+            style={{margin: '40px'}}
+          >
+            <input 
+              value={this.state.name}
+              onChange={this.handleChange}
+              name="name"
+              type="text"
+            />
           </form>
           <button 
             className="btn light-blue"
