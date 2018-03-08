@@ -1,4 +1,5 @@
 class Api::TripsController < ApplicationController
+  
   def index
     render json: Trip.all
   end
@@ -26,7 +27,7 @@ class Api::TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:name, :complete)
+    params.require(:trip).permit(:name )
   end
 
 end

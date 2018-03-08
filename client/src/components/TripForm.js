@@ -4,7 +4,8 @@ class TripForm extends React.Component {
   state = { name: "" }
 
   handleChange = (e) => {
-    this.setState({ name: e.target.value })
+    let {name, value } = e.target;
+    this.setState({ [name]: value })
   }
 
   handleSubmit = (e) => {
@@ -18,18 +19,19 @@ class TripForm extends React.Component {
       <div className="row">
         <form 
           className="col s12"
-          onSubmit={this.handleChange}
+          onSubmit={this.handleSubmit}
         >
           <div className="row">
             <div className="input-field col s12">
               <input 
+                value={this.state.name} 
                 placeholder="Add Trip Name" 
-                id="name" 
                 name="name" 
                 type="text" 
                 className="validate"
+                onChange={this.handleChange}
               />
-              <label for="name"></label>
+              <label htmlFor="name"></label>
             </div>
           </div>
         </form>

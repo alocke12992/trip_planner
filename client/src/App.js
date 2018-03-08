@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios'; 
 import TripForm from "./components/TripForm";
 import TripList from "./components/TripList"; 
-
 
 class App extends Component {
   state = { trips: [] };
@@ -11,8 +11,11 @@ class App extends Component {
   }
 
   addTrip = (name) => {
-    //TODO make api call to rails server to add item
-    //TODO update state
+    let trip = { name }
+    axios.post('/api/trips', trip )
+      .then(res => {
+        console.log(res)
+      })
   }
 
   updateTrip = (id) => {

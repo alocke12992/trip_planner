@@ -1,14 +1,18 @@
 import React from "react";
+import Trip from './Trip'; 
 
-class TripList extends React.Component {
-  state = { name: ""}
+ const TripList = ({ trips, updateTrip, deleteTrip }) => (
+    <div className="row">
+      { trips.map( trip => 
+        <Trip 
+          key={trip.id}
+          {...trip}
+          updateTrip={updateTrip}
+          deleteTrip={deleteTrip}
+        /> 
+        )
+      }
+    </div> 
+  )
 
-  render() {
-    return (
-      <div>
-        <h1>List</h1> 
-      </div>
-    )
-  }
-}
-export default TripList 
+export default TripList;  
