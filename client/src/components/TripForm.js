@@ -15,14 +15,25 @@ class TripForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          placeholder="Add A Trip"
-          required
-          value={this.state.name}
-          onChange={this.handleChange}
-        />
-      </form>
+      <div className="row">
+        <form 
+          className="col s12"
+          onSubmit={this.handleChange}
+        >
+          <div className="row">
+            <div className="input-field col s12">
+              <input 
+                placeholder="Add Trip Name" 
+                id="name" 
+                name="name" 
+                type="text" 
+                className="validate"
+              />
+              <label for="name"></label>
+            </div>
+          </div>
+        </form>
+      </div>
     )
   }
 }
