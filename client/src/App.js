@@ -22,13 +22,25 @@ class App extends Component {
   }
 
   updateTrip = (id) => {
-    //TODO make api call to update todo
-    //TODO update state
+    fetch(`/api/trips/${id}`, { method: 'PUT' })
+      .then(res => res.json())
+      .then(trip => {
+        let trips = this.state.trips.map(t => {
+          if (t.id === id)
+            return trip
+          return t;
+        });
+
+        this.setState({ trips });
+      })
   }
 
-  deleteTodo = (id) => {
-    //TODO make api call to delete todo
-    //TODO remove it from state
+  deleteTrip = (id) => {
+    fetch(`/api/trips/${id}`, { method: 'DELETE' })
+      .then(() => {
+        const { trips } = this.state;
+        this.setState({ trips: trips.filter(t => t.id !== id) })
+      })
   }
 
   render() {
