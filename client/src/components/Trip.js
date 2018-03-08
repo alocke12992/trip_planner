@@ -16,7 +16,8 @@ class Trip extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { updateTrip, id} = this.props
-    updateTrip(id, this.state.name)
+    updateTrip( id, this.state.name)
+    this.setState({editing: false })
   }
 
   render() {
@@ -26,6 +27,7 @@ class Trip extends React.Component {
           <form 
             className="col l4"
             style={{margin: '40px'}}
+            onSubmit={this.handleSubmit}
           >
             <input 
               value={this.state.name}

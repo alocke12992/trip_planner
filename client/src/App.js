@@ -24,8 +24,13 @@ class App extends Component {
   updateTrip = (id, name) => {
     let trip = { name }
     axios.put(`/api/trips/${id}`, trip)
-      .then(res => {
-        console.log(res)
+      .then( res => {
+        let trips = this.state.trips.map( t => {
+          if (t.id === id)
+            return res.data 
+          return t 
+        })
+        this.setState({trips})
       })
   }
 
