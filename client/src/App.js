@@ -7,14 +7,17 @@ class App extends Component {
   state = { trips: [] };
 
   componentDidMount() {
-    //TODO make a call to our rails server to get Items
+    axios.get('/api/trips')
+    .then( res => {
+      this.setState({ trips: res.data})
+    })
   }
 
   addTrip = (name) => {
     let trip = { name }
     axios.post('/api/trips', trip )
       .then(res => {
-        console.log(res)
+        this.setState({ trips: [res.data, ...this.state.trips]})
       })
   }
 
