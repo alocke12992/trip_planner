@@ -60,7 +60,8 @@ class Trip extends React.Component {
             <div className="card-content white-text">
               <span 
                 className="card-title white-text center"
-              >{this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1)}</span>
+              >{this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1)}
+              </span>
               { this.state.show ? 
                 <ul className="collection">
                   { this.props.locations.map( l => 

@@ -74,6 +74,7 @@ class App extends Component {
           updateTrip={this.updateTrip}
           deleteTrip={this.deleteTrip}
           showTrip={this.showTrip}
+          deleteLocation={this.deleteLocation}
         />
       </div>
     )
