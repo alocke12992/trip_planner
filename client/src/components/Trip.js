@@ -59,9 +59,9 @@ class Trip extends React.Component {
             <div className="card-content white-text">
               <span className="card-title white-text">{this.props.name}</span>
               { this.state.show ? 
-                <ul>
+                <ul className="collection">
                   { this.props.locations.map( l => 
-                    <li>{l.city} - {l.state} </li>
+                    <li className="collection-item light-blue-text" key={l.id}>{l.city} - {l.state} </li>
                   )} 
                 </ul>
                 :
