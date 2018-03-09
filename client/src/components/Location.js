@@ -1,12 +1,14 @@
 import React from 'react';
 
 class Location extends React.Component {
+
   state = {
     editing: false 
   }
 
 
   render() {
+    
     return(
       <li 
         className="collection-item light-blue-text"
@@ -15,14 +17,13 @@ class Location extends React.Component {
         className="btn"
         style={{
           margin:'5px',
-          fontSize: '10px',
           height: '20px', 
           width: '20px',
-          align: 'center',
         }}
-      >edit</button>
+        ><i className="material-icons center">mode_edit</i></button>
       <button 
         className="btn"
+        onClick={() => this.props.deleteLocation(this.props.trip_id, this.props.id)}
         style={{
           margin: '5px',
           fontSize: '10px',

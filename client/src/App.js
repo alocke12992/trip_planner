@@ -45,11 +45,12 @@ class App extends Component {
   }
 
   deleteTrip = (id) => {
-    fetch(`/api/trips/${id}`, { method: 'DELETE' })
-      .then(() => {
-        const { trips } = this.state;
-        this.setState({ trips: trips.filter(t => t.id !== id) })
-      })
+    const { trips } = this.state;
+    axios.delete(`/api/trips/${id}`)
+    .then( res => {
+      console.log(res)
+      this.setState({ trips: trips.filter(t => t.id !== id) })
+    })
   }
 
   addLocation = (location) => {
@@ -60,8 +61,9 @@ class App extends Component {
 
   }
 
-  deleteLocation = (id) => {
-
+  deleteLocation = (trip_id, id) => {
+    const { locations } = this.state
+    axios.delete(`/api/trips`)
   }
 
   render() {

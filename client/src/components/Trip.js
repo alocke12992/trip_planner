@@ -27,6 +27,17 @@ class Trip extends React.Component {
   }
 
   render() {
+    const { 
+      updateLocation, 
+      deleteLocation, 
+      addLocation 
+    } = this.props;
+    const locationProps = { 
+      updateLocation, 
+      deleteLocation, 
+      addLocation 
+    }
+
     if (this.state.editing) {
       return (
         <div className="col s12 m6">
@@ -48,7 +59,8 @@ class Trip extends React.Component {
               <button 
                 className="btn light-blue"
                 onClick={() => this.setState({ editing: false })}
-              >Cancel</button>
+              >Cancel
+              </button>
             </div>
           </div> 
         </div>
@@ -60,12 +72,18 @@ class Trip extends React.Component {
             <div className="card-content white-text">
               <span 
                 className="card-title white-text center"
-              >{this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1)}
+              >{
+                this.props.name.charAt(0).toUpperCase() + 
+                this.props.name.slice(1)}
               </span>
               { this.state.show ? 
                 <ul className="collection">
                   { this.props.locations.map( l => 
-                    <Location key={l.id} {...l} />
+                    <Location 
+                      key={l.id} 
+                      {...l} 
+                      {...locationProps} 
+                    />
                   )} 
                 </ul>
                 :
@@ -87,7 +105,9 @@ class Trip extends React.Component {
               </button>
   
               <button 
-                onClick={() => this.props.deleteTrip(this.props.id)}
+                onClick={() => 
+                  this.props.deleteTrip(this.props.id)
+                }
                 className="btn light-blue"
               >Delete
               </button>
