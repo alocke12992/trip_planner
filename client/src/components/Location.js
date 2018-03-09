@@ -22,9 +22,9 @@ class Location extends React.Component {
               height: '20px', 
               width: '20px',
             }}
-            ><Icon small>mode_edit</Icon></button>
+            ></button>
           <button 
-            className="btn"
+            className="btn red"
             onClick={() => this.props.deleteLocation(this.props.trip_id, this.props.id)}
             style={{
               margin: '5px',
@@ -33,7 +33,7 @@ class Location extends React.Component {
               width: '20px',
               align: 'center',
             }}
-          >X</button>
+          ></button>
         </div>
       </div>
 
