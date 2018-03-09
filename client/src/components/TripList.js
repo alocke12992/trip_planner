@@ -2,7 +2,7 @@ import React from "react";
 import Trip from './Trip'; 
 
  const TripList = ({ trips, updateTrip, deleteTrip }) => (
-    <div className="row">
+    <div className="row cards">
       { trips.map( trip => 
         <Trip 
           key={trip.id}

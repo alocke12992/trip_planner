@@ -23,23 +23,28 @@ class Trip extends React.Component {
   render() {
     if (this.state.editing) {
       return (
-        <div>
-          <form 
-            className="col l4"
-            style={{margin: '40px'}}
-            onSubmit={this.handleSubmit}
-          >
-            <input 
-              value={this.state.name}
-              onChange={this.handleChange}
-              name="name"
-              type="text"
-            />
-          </form>
-          <button 
-            className="btn light-blue"
-            onClick={() => this.setState({ editing: false })}
-          >Cancel</button>
+        <div className="col s12 m6">
+          <div className="card blue grey">
+            <div className="card-content white-text">
+              <span className="card-title white-text">Editing</span>
+                <form 
+                  onSubmit={this.handleSubmit}
+                >
+                <input 
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                  name="name"
+                  type="text"
+                />
+                </form>
+            </div> 
+            <div className="card-action white">
+              <button 
+                className="btn light-blue"
+                onClick={() => this.setState({ editing: false })}
+              >Cancel</button>
+            </div>
+          </div> 
         </div>
       )
     } else {
