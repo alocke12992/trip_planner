@@ -3,7 +3,6 @@ import axios from 'axios';
 import TripForm from "./components/TripForm";
 import TripList from "./components/TripList"; 
 
-
 class App extends Component {
   state = { 
     trips: [],
@@ -51,6 +50,18 @@ class App extends Component {
         const { trips } = this.state;
         this.setState({ trips: trips.filter(t => t.id !== id) })
       })
+  }
+
+  addLocation = (location) => {
+
+  }
+
+  updateLocation = (location) => {
+
+  }
+
+  deleteLocation = (id) => {
+
   }
 
   render() {

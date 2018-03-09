@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Location from './Location'
 
 
 class Trip extends React.Component {
@@ -7,11 +7,12 @@ class Trip extends React.Component {
     editing: false,
     name: this.props.name,
     show: false,
+    showing_id: 0,
   }
 
   showLocations = () => {
     this.props.showTrip(this.props.id) 
-    this.setState({ show: true })
+    this.setState({ show: true, showing_id: 0 })
   }
   handleChange = (e) => {
     let { name, value } = e.target;
@@ -57,11 +58,13 @@ class Trip extends React.Component {
         <div className="col s12 m6">
           <div className="card blue grey">
             <div className="card-content white-text">
-              <span className="card-title white-text">{this.props.name}</span>
+              <span 
+                className="card-title white-text center"
+              >{this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1)}</span>
               { this.state.show ? 
                 <ul className="collection">
                   { this.props.locations.map( l => 
-                    <li className="collection-item light-blue-text" key={l.id}>{l.city} - {l.state} </li>
+                    <Location key={l.id} {...l} />
                   )} 
                 </ul>
                 :
