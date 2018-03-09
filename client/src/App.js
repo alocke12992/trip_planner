@@ -63,7 +63,11 @@ class App extends Component {
 
   deleteLocation = (trip_id, id) => {
     const { locations } = this.state
-    axios.delete(`/api/trips`)
+    axios.delete(`/api/trips/${trip_id}/locations/${id}`)
+    .then( res => {
+      console.log(res)
+      this.setState({ locations: locations.filter(t => t.id !== id) })
+    })
   }
 
   render() {
