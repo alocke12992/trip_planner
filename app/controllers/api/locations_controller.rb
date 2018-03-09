@@ -14,6 +14,11 @@ class Api::LocationsController < ApplicationController
 
   def create
   end 
+
+  def destroy
+    Location.find(params[:id]).destroy
+    render json: { message: 'Location deleted' }
+  end 
   
   private 
 
