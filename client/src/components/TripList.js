@@ -1,7 +1,7 @@
 import React from "react";
 import Trip from './Trip'; 
 
- const TripList = ({ trips, updateTrip, deleteTrip, showTrip }) => (
+ const TripList = ({ trips, updateTrip, deleteTrip, showTrip, locations }) => (
     <div className="row cards">
       { trips.map( trip => 
         <Trip 
@@ -10,6 +10,7 @@ import Trip from './Trip';
           updateTrip={updateTrip}
           deleteTrip={deleteTrip}
           showTrip={showTrip}
+          locations={locations}
         /> 
         )
       }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import TripForm from "./components/TripForm";
 import TripList from "./components/TripList"; 
 
+
 class App extends Component {
   state = { 
     trips: [],
@@ -58,6 +59,7 @@ class App extends Component {
         <TripForm addTrip={this.addTrip} />
         <TripList 
           trips={this.state.trips}
+          locations={this.state.locations}
           updateTrip={this.updateTrip}
           deleteTrip={this.deleteTrip}
           showTrip={this.showTrip}

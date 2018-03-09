@@ -10,8 +10,8 @@ class Trip extends React.Component {
   }
 
   showLocations = () => {
-    debugger
     this.props.showTrip(this.props.id) 
+    this.setState({ show: true })
   }
   handleChange = (e) => {
     let { name, value } = e.target;
@@ -58,7 +58,15 @@ class Trip extends React.Component {
           <div className="card blue grey">
             <div className="card-content white-text">
               <span className="card-title white-text">{this.props.name}</span>
-              <p>Trip Details</p>
+              { this.state.show ? 
+                <ul>
+                  { this.props.locations.map( l => 
+                    <li>{l.city} - {l.state} </li>
+                  )} 
+                </ul>
+                :
+                <div></div>
+              }
             </div>
             <div className="card-action white">
               <button
