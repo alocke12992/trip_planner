@@ -54,7 +54,10 @@ class App extends Component {
   }
 
   addLocation = (location) => {
-
+    axios.post(`/api/trips/${location.trip_id}/locations`, location)
+    .then( res => {
+      console.log(res.data)
+    })
   }
 
   updateLocation = (location) => {
@@ -81,6 +84,7 @@ class App extends Component {
           deleteTrip={this.deleteTrip}
           showTrip={this.showTrip}
           deleteLocation={this.deleteLocation}
+          addLocation={this.addLocation}
         />
       </div>
     )

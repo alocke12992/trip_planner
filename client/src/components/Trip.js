@@ -7,7 +7,8 @@ class Trip extends React.Component {
     editing: false,
     name: this.props.name,
     show: false,
-    showing_id: 0,
+    city: '',
+    state: '',
   }
 
   showLocations = () => {
@@ -26,6 +27,17 @@ class Trip extends React.Component {
     this.setState({editing: false })
   }
 
+  handleSubmitLocation = (e) => {
+    e.preventDefault();
+    let location = {
+      city: this.state.city,
+      state: this.state.state,
+      trip_id: this.props.id 
+    }
+    this.props.addLocation(location)
+    this.setState({ city: '', state: '' })
+  }
+
   render() {
     const { 
       updateLocation, 
@@ -39,6 +51,7 @@ class Trip extends React.Component {
     }
 
     if (this.state.editing) {
+      // EDIT TRIP
       return (
         <div className="col s12 m6">
           <div className="card blue grey">
@@ -77,6 +90,32 @@ class Trip extends React.Component {
                 this.props.name.slice(1)}
               </span>
               { this.state.show ? 
+              
+              // ADD LOCATION FORM 
+              <div>
+                <form onSubmit={this.handleSubmitLocation}>
+                  <input 
+                    value={this.state.city}
+                    onChange={this.handleChange}
+                    name="city"
+                    type="text"
+                    placeholder="Add City"
+                  />
+                   <input 
+                    value={this.state.state}
+                    onChange={this.handleChange}
+                    name="state"
+                    type="text"
+                    placeholder="Add State"
+                  />
+                  <button
+                    style={{ margin: '10px' }}
+                    className="btn light-blue"
+                    type="submit"
+                  >Add
+                  </button>
+                </form>
+            // LIST EACH LOCATION 
                 <ul className="collection">
                   { this.props.locations.map( l => 
                     <Location 
@@ -86,10 +125,12 @@ class Trip extends React.Component {
                     />
                   )} 
                 </ul>
+              </div>
                 :
                 <div></div>
               }
             </div>
+
             <div className="card-action white">
               <button
                 onClick={this.showLocations}
@@ -103,7 +144,6 @@ class Trip extends React.Component {
                 className="btn light-blue"
               >Edit
               </button>
-  
               <button 
                 onClick={() => 
                   this.props.deleteTrip(this.props.id)
@@ -114,13 +154,9 @@ class Trip extends React.Component {
             </div>
           </div>
         </div>
-
       )
     }
-      
-    
   }
-
 }
 
 
