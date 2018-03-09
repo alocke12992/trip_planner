@@ -4,12 +4,22 @@ import TripForm from "./components/TripForm";
 import TripList from "./components/TripList"; 
 
 class App extends Component {
-  state = { trips: [] };
+  state = { 
+    trips: [],
+    locations: [], 
+  };
 
   componentDidMount() {
     axios.get('/api/trips')
     .then( res => {
       this.setState({ trips: res.data})
+    })
+  } 
+
+  showTrip = (id) => {
+    axios.get(`/api/trips/${id}/locations`)
+    .then( res => {
+      this.setState({ locations: res.data })
     })
   }
 
@@ -50,6 +60,7 @@ class App extends Component {
           trips={this.state.trips}
           updateTrip={this.updateTrip}
           deleteTrip={this.deleteTrip}
+          showTrip={this.showTrip}
         />
       </div>
     )

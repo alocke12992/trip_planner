@@ -4,6 +4,11 @@ class Api::TripsController < ApplicationController
     render json: Trip.all
   end
 
+  def show
+    @trip = Trip.find(params[:id])
+  end 
+
+
   def create
     trip = Trip.new(trip_params)
     if trip.save

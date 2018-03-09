@@ -6,8 +6,13 @@ class Trip extends React.Component {
   state = {
     editing: false,
     name: this.props.name,
+    show: false,
   }
 
+  showLocations = () => {
+    debugger
+    this.props.showTrip(this.props.id) 
+  }
   handleChange = (e) => {
     let { name, value } = e.target;
     this.setState({ [name]: value })
@@ -49,7 +54,6 @@ class Trip extends React.Component {
       )
     } else {
       return (
-
         <div className="col s12 m6">
           <div className="card blue grey">
             <div className="card-content white-text">
@@ -57,6 +61,12 @@ class Trip extends React.Component {
               <p>Trip Details</p>
             </div>
             <div className="card-action white">
+              <button
+                onClick={this.showLocations}
+                style={{ margin: '10px' }}
+                className="btn light-blue"
+              >Locations
+              </button>
               <button 
                 onClick={() => this.setState({ editing: true })}
                 style={{margin: '10px'}} 

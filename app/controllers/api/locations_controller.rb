@@ -1,8 +1,9 @@
 class Api::LocationsController < ApplicationController
-  before_action :set_trip 
+  before_action :set_trip
 
   def index
     @locations = @trip.locations.all 
+    render json: @locations 
   end 
 
   def show
@@ -17,7 +18,7 @@ class Api::LocationsController < ApplicationController
   private 
 
   def set_trip 
-    @trip = Trip.find(params[:id])
+    @trip = Trip.find(params[:trip_id])
   end 
 
 end
