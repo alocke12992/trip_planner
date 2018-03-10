@@ -1,22 +1,23 @@
 import React from 'react';
-import { Button, Icon } from 'react-materialize'
+
 
 class Location extends React.Component {
 
   state = {
-    editing: false 
+    editing: false,
+    
   }
 
 
   render() {
-    
+
     return(
       <div>
         <div 
           className="collection-item light-blue-text"
         >{this.props.city} - {this.props.state}
           <button 
-            className="btn"
+            className="btn "
             style={{
               margin:'5px',
               height: '20px', 
@@ -24,6 +25,7 @@ class Location extends React.Component {
             }}
             ></button>
           <button 
+            waves='light'
             className="btn red"
             onClick={() => this.props.deleteLocation(this.props.trip_id, this.props.id)}
             style={{

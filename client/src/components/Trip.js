@@ -115,7 +115,7 @@ class Trip extends React.Component {
                   >Add
                   </button>
                 </form>
-            // LIST EACH LOCATION 
+            //LIST EACH LOCATION 
                 <ul className="collection">
                   { this.props.locations.map( l => 
                     <Location 
