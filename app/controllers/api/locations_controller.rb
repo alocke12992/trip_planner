@@ -11,9 +11,6 @@ class Api::LocationsController < ApplicationController
      @location = Location.find(params[:id])
   end 
 
-  def update 
-  end 
-
   def create
     location = Location.new(location_params)
     if location.save
@@ -21,6 +18,12 @@ class Api::LocationsController < ApplicationController
     else
       render json: { errors: location.errors }, status: :unprocessable_entity 
     end
+  end 
+
+   def update 
+    location = Location.find(params[:id])
+    location.update(city: params[:city], state: params[:state], trip_id: params[:trip_id] )
+    render json: location
   end 
 
   def destroy

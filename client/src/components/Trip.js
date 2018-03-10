@@ -48,10 +48,10 @@ class Trip extends React.Component {
       updateLocation, 
       deleteLocation, 
       addLocation 
-    }
+    } 
 
     if (this.state.editing) {
-      // EDIT TRIP
+    
       return (
         <div className="col s12 m6">
           <div className="card blue grey">
@@ -83,15 +83,14 @@ class Trip extends React.Component {
         <div className="col s12 m6">
           <div className="card blue grey">
             <div className="card-content white-text">
-              <span 
-                className="card-title white-text center"
-              >{
-                this.props.name.charAt(0).toUpperCase() + 
-                this.props.name.slice(1)}
+              <span className="card-title white-text center">
+                Trip
               </span>
+              <span className="card-content">{
+                this.props.name.charAt(0).toUpperCase() +
+                this.props.name.slice(1)
+              }</span>
               { this.state.show ? 
-              
-              // ADD LOCATION FORM 
               <div>
                 <form onSubmit={this.handleSubmitLocation}>
                   <input 
@@ -115,7 +114,7 @@ class Trip extends React.Component {
                   >Add
                   </button>
                 </form>
-            //LIST EACH LOCATION 
+            
                 <ul className="collection">
                   { this.props.locations.map( l => 
                     <Location 

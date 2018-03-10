@@ -60,8 +60,17 @@ class App extends Component {
     })
   }
 
-  updateLocation = (location) => {
-
+  updateLocation = (trip_id, id, location) => {
+  
+    axios.put(`/api/trips/${trip_id}/locations/${id}`, location)
+    .then( res => {
+      let locations = this.state.locations.map( l => {
+        if (l.id === id)
+          return res.data
+        return l 
+      })
+      this.setState({ locations})
+    })
   }
 
   deleteLocation = (trip_id, id) => {
@@ -85,6 +94,7 @@ class App extends Component {
           showTrip={this.showTrip}
           deleteLocation={this.deleteLocation}
           addLocation={this.addLocation}
+          updateLocation={this.updateLocation}
         />
       </div>
     )
